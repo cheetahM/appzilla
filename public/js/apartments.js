@@ -19,6 +19,8 @@ $(document).ready(function(){
 		var pricemin = $("#range-min").val().trim();
 		var pricemax = $("#range-max").val().trim();
 		var bedroom = $("#bedrooms").val().trim()
+
+		console.log(bedroom);
 		
 			// replace any spaces between that character with no space
 			// (effectively deleting the spaces). Make the string lowercase
@@ -50,7 +52,7 @@ $(document).ready(function(){
 
 			// finalQuery = "/?address=" + address + "&price=" + JSON.stringify({"lt": pricemax, "gt":pricemin}) + "&bedroom=" + bedroom + "&city=" + city + "&state=" + state + "&zip=" + zip + "&lat=" + latitude + "&longitude=" + longitude + "&image_url=" + image_url;
 
-			finalQuery = "/?zip" + zipcode + "/?price=" + JSON.stringify({"lt": pricemax, "gt":pricemin}) + "&bedroom=" + bedroom
+			finalQuery =  "/?bedroom=" + bedroom
 			$.ajax(
 
 			{

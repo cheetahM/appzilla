@@ -1,0 +1,103 @@
+/* Page 1 ------------------------------*/
+	#page1 {
+		background-color: #eee;
+		min-height: 100vh;
+		padding-top: 80px; /* extra 80px to account for body nav */
+		padding-bottom: 40px;
+		position: relative;
+	}
+
+/* Feed ------------------------------*/
+	#saved-feed.collapsible li.listing,
+	#feed.collapsible li.listing {
+		position: relative;
+	}
+	#saved-feed .collapsible-header,
+	#feed .collapsible-header {
+		padding: 1rem;
+		padding: 1.5rem 15px 1.5rem 1rem;
+		background-color: #ffffff;
+		/*background-color: #fefefe;*/
+	}
+	#saved-feed .collapsible-body,
+	#feed .collapsible-body {
+		background-color: #ffffff;
+		/*background-color: #fdfdfd;*/
+		padding: 1.5rem 4rem;
+		position: relative;
+	}
+	.headline {
+		/* Match indent */
+		margin: 0;
+		margin-left: 35px;
+		overflow: hidden;
+	}
+	.headline {
+		display: block;
+		font-weight: 500;
+		/*font-weight: 600;*/
+		font-size: 17.5px;
+		/*margin-right: 10px;*/
+		height: 22px;
+		line-height: 22px;
+		letter-spacing: -0.2px;
+	}
+	.subheadline {
+		display: block;
+		font-weight: 300;
+		font-weight: 400;
+		font-size: 14px;
+		height: 16px;
+		line-height: 16px;
+		margin: 0;
+		letter-spacing: -0.1px;
+		/*color: rgba(0,0,0,0.7);*/
+
+	}
+	.subheadline span {
+		display: inline-block;
+		float: left;
+		/*margin-left: 5px;*/
+	}
+	.subheadline span:first-child {
+		margin-right: 8px;
+	}
+	.subheadline span.date {
+		float: right;
+	}
+	.subheadline span.company::after {
+		content: ',';
+	}
+	.subheadline span::before {
+		/*content: '|';*/
+		/*margin-right: 5px;*/
+	}
+	/* Listing number */
+	.listing-number {
+		height: 22px;
+		line-height: 22px;
+		width: 20px;
+		color: rgba(0,0,0,0.4);
+		text-align: right;
+		font-weight: 400;
+	}
+
+/* Meta Details ------------------------------*/
+	.meta-detail {
+		/*font-family: "cutive mono";*/
+		/*font-family: 'Roboto Slab';*/
+		line-height: 2em;
+		font-weight: 400;
+	}
+	.meta-detail::before {
+		font-weight: 500;
+		margin-right: 8px;
+		color: #333;
+		/*text-decoration: underline;*/
+		/*font-style: italic;*/
+	}
+
+	.meta-detail{
+		margin-left: 0;
+	}
+	
