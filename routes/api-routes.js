@@ -18,7 +18,7 @@ module.exports = function(app) {
 		  // We have access to the apartments as an argument inside of the callback function
 		  res.json(dbApartment);
 		});
-		});
+	});
 		
 	// Search for Specific Character (or all characters) then provides JSON
   app.get("/api/:zip?", function(req, res) {

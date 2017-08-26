@@ -1,0 +1,68 @@
+body {
+	background-image: url(../images/city-background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: fixed;
+}
+
+.card img {
+	width: 100%;
+	height: auto;
+	padding: 5px;
+}
+
+.row {
+    text-align: center;
+}
+
+.col-md-1 {
+    display:inline-block;
+}
+}
+
+.card p {
+	text-align: center;
+	padding: 10px;
+}
+
+.card h4 {
+	text-align: center;
+}
+
+#headerDiv {
+	background-color: #111b2f;
+	padding: 2%;
+	opacity: 0.9;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+#team {
+	background-color: white;
+}
+
+.card{
+	background-color: white;
+	width: 90%;
+	height: auto;
+	margin: 40px auto;
+}
+
+.carousel {
+	display: none;
+	height: 200px;
+}
+
+h2 {
+	color: #F5F5F5;
+	padding: 4%;
+}
+
+/*
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}*/
