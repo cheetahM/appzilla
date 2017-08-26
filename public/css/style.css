@@ -1,0 +1,204 @@
+/*style.css*/
+
+body {
+	position: relative;
+	/*background-color: #fafafa;*/
+	/*background-color: rgba(255,255,255,0.9);*/
+	background-color: #393965;
+	font-family: 'Roboto','Helvetica Neue','Helvetica','Arial',sans-serif;
+}
+p {
+	margin: 0;
+}
+.float-left		{ float:left  }
+.float-right	{ float:right }
+.pos-fixed		{ position: fixed !important }
+.pos-relative	{ position: relative !important }
+.pos-absolute	{ position: absolute !important }
+.pos-initial	{ position: initial !important }
+
+
+/* Grid Modification -------------------*/
+	.popout-comp-left {
+		margin-left: 24px;
+	}
+	.popout-comp-right {
+		margin-right: 24px;
+	}
+	.thin-row {
+
+	}
+
+/* Photo Tint ------------------------------*/
+	.photo-tint {
+		height: 100%;
+		width: 100%;
+		background-color: #000;
+		opacity: 0.1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+/* Ghost ------------------------------*/
+	.ghost {
+		display: inline-block;
+		position: absolute;
+	}
+/* Filtering ------------------------------*/
+	.body-nav .input-field input {
+		color: #000;
+	}
+
+	.filterSourceInput {
+		background-color: #cfd8dc;
+		color: #cfd8dc;
+
+	}
+
+
+/* Dropdown Checkboxes ------------------------------*/
+	
+	.input-field.thin {
+		margin-top: 0;
+	}
+
+/* Side Nav ------------------------------*/
+	.side-nav .collapsible-body form li, 
+	.side-nav.fixed .collapsible-body form li {
+		padding: 0 23.5px 0 31px;
+	}
+	.side-nav .input-field {
+		margin-top: 0;
+	}
+	.side-nav.input-field input[type=checkbox] + label {
+		 width: 100%;
+	}
+
+/*------------------------------------------------------------*/
+/*--------------        Novia was here :P     ----------------*/
+/*------------------------------------------------------------*/
+
+
+	#displayJobs {
+		visibility: hidden;	
+	}
+
+	.save-wrap {
+		visibility: hidden;	
+	}
+
+/*------------------------------------------------------------*/
+
+	.btn .material-icons {
+		height: 100%;
+		font-size: 1.5rem;
+	}
+	.btn .material-icons.float-left {
+		margin-right: 10px;
+	}
+	/*background-color: #0277bd;*/
+	/*background-color: #0288d1;*/
+	/*background-color: #039be5;*/
+	/*background-color: #e53935;*/
+	/*background-color: #1e88e5;*/
+	/*background-color: #00acc1;*/
+	/*background-color: #00897b;*/
+	/*background-color: #43a047;*/
+	/*background-color: #7cb342;*/
+	/*background-color: #fdd835;*/
+	/*background-color: #ffb300;*/
+	/*background-color: #fb8c00;*/
+	/*background-color: #f4511e;*/
+	/*background-color: #546e7a;*/
+	/*background-color: #757575;*/
+
+
+/*------------------------------------------------------------*/
+
+	mark {
+		background-color: rgba(255,255,0,0.4);
+		color: #000;
+		padding: 4px 5px;
+		margin: -4px -5px;
+	}
+
+/*------------------------------------------------------------*/
+/* Chips */
+	.chip {
+		font-size: 12px;
+		height: 25px;
+		line-height: 25px;
+		border-radius: 15px;
+		padding: 0 5px 0 10px;
+		display: inline-block;
+		position: relative;
+		/*float: left;*/
+	}
+
+	.chip .close {
+		font-size: 16px;
+		line-height: 24px;
+		padding-left: 4px;
+	}
+	.side-nav .collapsible .chip-bag,
+	.chip-bag {
+		padding: 0 5%;
+		/*margin-bottom: 15px;*/
+		position: relative;
+		line-height: 25px;
+		min-height: 0;
+	}
+
+/*------------------------------------------------------------*/
+/*Attribution*/
+	.attribution {
+		display: inline-block;
+		position: relative;
+		height: 20px;
+		line-height: 20px;
+		color: #333;
+	}
+	.attribution img {
+		float: right;
+		margin-left: 4px;
+		margin-top: 2px;
+	}
+
+
+/*------------------------------------------------------------*/
+/* Navs */
+	nav ul a.header-link,
+	nav ul a {
+		display: inline-block;
+		border-radius: 4px;
+		background-color: transparent;
+		color: #fff;
+		box-shadow: none;
+		font-weight: 500;
+		font-size: 1.2rem;
+		text-transform: uppercase;
+		padding: 0 1rem;
+		transition: color 200ms;
+	}
+	nav ul a.header-link:hover,
+	nav ul a:hover {
+		color: #eee;
+		text-decoration: underline;
+	}
+/*------------------------------------------------------------*/
+/* Lone Icons */
+.alone i.material-icons {
+	float: left;
+	margin: 0;
+}
+a.alone {
+	padding: 0 1rem;
+}
+/*------------------------------------------------------------*/
+
+
+.carousel-item{
+	width:400px !important;
+	}

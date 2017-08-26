@@ -1,0 +1,162 @@
+/*banner.css*/
+
+/* Banner ------------------------------*/
+	#banner {
+		width: 100%;
+		height: 100vh;
+		min-height: 400px;
+		margin: 0;
+		padding: 100px 0 50px;
+		overflow: hidden;
+		position: relative;
+		z-index: 0;
+		background-color: transparent;
+		/*background-color: #393965;*/
+		background-image: url(../assets/images/city-background.jpg);
+		background-size: cover;
+		background-position: 50% 50%;
+
+	}
+	#banner form {
+		z-index: 910;
+	}
+
+	/*#banner .container{
+		z-index: 911;
+	}*/
+	#banner .photo-tint {
+		z-index: 902;
+		opacity: 0.1;
+	}
+/* Banner Logo */
+	#banner-logo-wrap {
+		height: initial;
+		position: relative;
+		max-width: 200px;
+		/*margin-bottom: 25px;*/
+		margin: 0 auto;
+		width: 75%;
+		padding: 0;
+	}
+	.prog-wrap {
+		/*position: relative;*/
+	}
+	#banner .feature-logo {
+		margin: 0 auto;
+		/*max-width: 200px;*/
+		width: 100%;
+		height: initial; 
+		display: block;
+		background-color: transparent;
+		opacity: 0.6;
+	}
+
+	#banner .feature-logo.progress-bar {
+		height: 100%;
+		width: 100%;
+		/*background-color: rgba(0,0,0,0.5);*/
+		max-width: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		opacity: 1;
+		background-image: url(../assets/images/logo.png);
+		background-size: cover;
+		background-position: 0% 0%;
+	}
+	#last-search {
+		display: block;
+		width: 100%;
+		font-size: 15px;
+		line-height: 45px;
+		height: 45px;
+		/*position: absolute;*/
+		/*bottom: 0px;*/
+		/*left: 0;*/
+		color: #fff;
+		text-align: left;
+		z-index: 903;
+		/*outline: 1px solid red;*/
+		margin-top: 8px;
+		overflow: hidden;
+	}
+	
+	#last-search a {
+		font-size: 15px;
+		line-height: inherit;
+		height: inherit;
+		color: #ccc;
+		font-weight: 300;
+		font-style: italic;
+		padding: 10px;
+		border-radius: 4px;
+		background-color: rgba(0,0,0,0.4);
+		transition: all 700ms;
+	}
+	#last-search a:hover {
+		background-color: rgba(0,0,0,0.8);
+	}
+	#last-search a::before {
+		content: 'Search again: ';
+		margin-right: 10px;
+	}
+
+	#last-search .target {
+		font-weight: 500;
+		font-style: normal;
+		/*margin: 0 10px;*/
+		/*text-decoration: underline;*/
+	}
+	#last-search-city::before {
+		content: " / ";
+	}
+
+	.noUi-connect {
+    	background-color: #3498db;
+	}
+	
+@media all and (max-width: 800px) {
+
+	#last-search a::before {
+		content: 'Repeat Last Search';
+		margin-right: 0px;
+	}
+	#last-search span.target {
+		display: none;
+	}
+}
+
+
+/* Banner Image Alternates ------------------------------*/
+	/*.banner-dune           #banner { background-image: url(../img/wayne/1920-q6/banner-dune.jpg); }*/
+	/*.banner-antelope-flame #banner { background-image: url(../img/wayne/1920-q6/banner-antelope-flame.jpg); }*/
+	/*.banner-antelope-heart #banner { background-image: url(../img/wayne/1920-q6/banner-antelope-heart.jpg); }*/
+	/*.banner-goldengate     #banner { background-image: url(../img/wayne/1920-q6/banner-goldengate.jpg); }*/
+	/*.banner-baybridge      #banner { background-image: url(../img/wayne/1920-q6/banner-baybridge.jpg); }*/
+
+	/*.banner-dune           #submit { background-color: #3498db; }*/
+	/*.banner-antelope-flame #submit { background-color: #3498db; }*/
+	/*.banner-antelope-heart #submit { background-color: #3498db; }*/
+	/*.banner-goldengate     #submit { background-color: #3498db; }*/
+	/*.banner-baybridge      #submit { background-color: #f4511e; }*/
+	
+	/*.banner-dune           {}*/
+	/*.banner-antelope-flame {}*/
+	/*.banner-antelope-heart {}*/
+	/*.banner-baybridge      {}*/
+	/*.banner-goldengate #banner .photo-tint { opacity: 0.34; }*/
+	/*.banner-goldengate #header-side-nav-link,*/
+	/*.banner-goldengate #main-nav-body a.header-link {
+		color: rgba(0,0,0,0.81);
+	}*/
+	/*.banner-goldengate #main-nav-body a.header-link.btn {color: #eee; }*/
+
+
+	/*@media screen and (orientation: portrait){
+		#banner.banner-dune           { background-image: url(../img/wayne/mobile-q6p/banner-dune.jpg); }
+		#banner.banner-antelope-flame { background-image: url(../img/wayne/mobile-q6p/banner-antelope-flame.jpg); }
+		#banner.banner-antelope-heart { background-image: url(../img/wayne/mobile-q6p/banner-antelope-heart.jpg); }
+		#banner.banner-goldengate     { background-image: url(../img/wayne/mobile-q6p/banner-goldengate.jpg); }
+		#banner.banner-baybridge      { background-image: url(../img/wayne/mobile-q6p/banner-baybridge.jpg); }
+
+	} */

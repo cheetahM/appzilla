@@ -1,9 +1,23 @@
+var latitude = 0;
+var longitude = 0;
+var city = "";
+var address = "";
+var zip = "";
+
 $(document).ready(function(){
 
 
-	$("#apt-search-btn").on("click", function() {
+	$("#submit").on("click", function(event) {
+
+		event.preventDefault();
+
+		$('#feed').empty();  
+
+		// document.getElementByClassName("")
 		// save the character they typed into the character-search input
-		var searchedApartment = $("#apartment-search").val().trim();
+		var location = $("#apartment-search").val().trim();
+		var pricemin = $("#range-min").val().trim();
+		var pricemax = $("#range-max").val().trim();
 		
 			// replace any spaces between that character with no space
 			// (effectively deleting the spaces). Make the string lowercase
@@ -11,114 +25,182 @@ $(document).ready(function(){
 		
 			// run an AJAX GET-request for our servers api,
 			// including the user's character in the url
-			$.get("/api/" + searchedApartment, function(data) {
-				// log the data to our console
-				console.log(data);
-		
-				// if the data is false (i.e. not there), then return an error message
-				if(data === false) {
-					$("#name").text("The force is not strong with this one. Your character was not found. ");
-					// don't show the stats section, since there are no stats to show
-					$("#stats").hide();
-				} else {
-					alert(data);
-					// show the stats section
-					// $("#stats").show();
-					// // put the character name in the name tag,
-					// $("#statsResults").append("<h2>" + data.name + "</h2>");
-					// $("#statsResults").append("<h3>Role: " + data.role + "</h3>");
-					// $("#statsResults").append("<h3>Age: " + data.age + "</h3>");
-					// $("#statsResults").append("<h3>Force Points: " + data.forcePoints + "</h3>");
-					// //$("#name").text(data.name);
-					// // the role in the role tag,
-					// $("#role").text(data.role);
-					// // the age in the age tag,
-					// $("#age").text(data.age);
-					// // and the force points in the force-points tag
-					// $("#force-points").text(data.forcePoints);
-				}
+
+			var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=AIzaSyBxgMHK10T-YS90r9OQhsSJm_aeEFAGcZ8",
+                "method": "GET"
+            };
+
+			$.ajax(settings).done(function (response) {
+                var results = response.results[0];
+                city = getCity(results[0]);
+                address = getAddress(results[0])
+                latitude = response.results[0].geometry.location.lat;
+                longitude = response.results[0].geometry.location.lng;
+                zip = getPostal(results[0]);
+
+			                
 			});
+
+			// TODO: Find price interval instead of fixed price
+			
+
+			finalQuery = "/?address=" + address + "&price=" + JSON.stringify({"lt": pricemax, "gt":pricemin}) + "&bedroom=" + bedroom + "&city=" + city + "&state=" + state + "&zip=" + zip + "&lat=" + latitude + "&longitude=" + longitude + "&image_url=" + image_url;
+
+			$.ajax(
+
+			{
+				method: "GET",
+				url: "/api" + finalQuery
+			}
+			).done(function(data){
+
+				console.log("Now at the apartemtns.js we received this: " + JSON.stringify(receivedDataFromDatabase,null,'\t'));
+
+				for (var i = 0; i<data.length; i++) {
+
+					var property = $('<li>');
+						property.addClass('listing');
+						property.attr('data-index', i);
+						property.attr('data-address', data[i].address);
+						property.attr('data-city', data[i].city);
+						property.attr('data-source', "");
+						property.attr('data-time-created',"");
+						property.attr('data-image', data[i].image_url);
+						property.attr('data-lat', data[i].lat);
+						property.attr('data-long', data[i].longitude);
+						property.attr('data-bed', data[i].bedroom)
+
+					var listingNumber = $('<span>');
+						listingNumber.addClass('listing-number ghost');
+						listingNumber.text(i);
+
+					var headerL = $('<div>');
+						headerL.addCLass('collapsible-header');
+
+					var bodyL = $('<div>');
+						bodyL.addClass('collapsible-body');
+
+					var headline = $('<h2>');
+						headline.addClass('headline');
+						headline.text(data[i].address);
+
+					var subheadline = $('<h3>');
+						subheadline.addClass('subheadline');
+
+					var subheadCity = $('<span>');
+						subheadCity.addClass('city');
+						subheadCity.text(data[i].city + ", ");
+
+					var subheadState = $('<span>');
+						subheadState.addClass('state');
+						subheadState.text(data[i].state + ", ");
+
+					var subheadZip = $('<span>');
+						subheadZip.addClass('zip');
+						subheadZip.text(data[i].zip);
+
+					var subheadPosted = $('<span>');
+						subheadPosted.addClass('date');
+						subheadPosted.text("");
+
+						subheadline.append(subheadCity);
+						subheadline.append(subheadState);
+						subheadline.append(subheadZip);
+						subheadline.append(subheadPosted)
+
+
+					var priceWrap = $('<p>');
+						companyWrap.addClass('meta-detail');
+						companyWrap.addClass('price');
+						companyWrap.text(data[i].price);
+
+					var bedroomWrap = $('<p>');
+						bedroomWrap.addClass('meta-detail');
+						bedroomWrap.addClass('bedroom');
+						bedroomWrap.text(location);
+
+					var imageWrap = $('<img>');
+						imageWrap.addClass('meta-detail');
+						imageWrap.addClass("image_url")
+						imageWrap.attr("src", data[i].image_url)
+
+
+					bodyL.append(priceWrap);
+					bodyL.append(bedroomWrap);
+					bodyL.append(imageWrap);
+					
+					headerL.append(listingNumber);			
+					headerL.append(headlineL);			
+					headerL.append(subheadlineL);		
+						
+
+					property.append(headerEl);
+					property.append(bodyEl);
+
+					$('#feed').append(listingEl);
+
+				}
+
+			})
+
 	});
 
 
+	// //"#apartmentSearch", sendSearchInfo(finalQuery));
+	// $( "#apartmentSearch" ).click(sendSearchInfo(finalQuery));
 
+	// $("#city").click(function(event) {
+	// 	event.preventDefault();
+	// 	var city = $('#city').val().trim;
 
-
-	// this will be called when we need the details page
-	//$(document).on("click", "button.detailsPageButton", sendInfoToDetailsPage(arrayOfAppartments));
-
-	var arrayOfAppartments = [];
-
-	//var  address = $('.address').val().trim();
-	var city = $('#city').val().trim;
-	//var state = $('.state').val().trim;
-	// var zip = $('.zip').val().trim;
-	// var lat = $('.lat').val().trim;
-	// var long = $('.long').val().trim;
-	// var image_url = $('.image_url').val().trim;
-	//var queryURL = "/?";
-
-	// query should look like this: 
-	//var finalQuery = "/?address=" + address + "&city=" + city +"&state=" + state + "&zip=" + zip + "&lat=" + lat + "&long=" + long + "&image_url=" + image_url;
-	var finalQuery = "sf";
-
-	// this function will send search info to our database
-	// and get the data back
-	// once the data is received it will be in a json format (array of objects)
-	// each object will represent one individual appartment that was listed. 
-	// with that data we will create our div for display and once that is done we will insert our
-	// new div into our front page. 
-	var sendSearchInfo = function(finalQuery) {
-		$.ajax(
-			{
-				method: "GET",
-				url: "/api/" + finalQuery
-			}
-		).done(function(receivedArrayOfApartments) {
-
-			//arrayOfAppartments = receivedArrayOfApartments;
-			//  now use the data to post it for the user
-			//  received data should be in a json format, array of objects
-			//  each object will be a single appartment with information
-
-			//   looping through the array of objects, and getting each object  
-			// receivedArrayOfApartments.forEach(function(apartment){
-			// 	var apartmentDetails = $('div');
-			// 	// we will store the info in this div
-			// 	//  add class to each small div if we want to do CSS styling later
-			// 	apartmentDetails.addClass('appartmentDisplay');
-
-			// 	apartmentDetails.append("<p>" + apartment.address + "</p>");
-			// 	apartmentDetails.append("<p>" + apartment.city + "</p>");
-			// 	apartmentDetails.append("<p>" + apartment.state + "</p>");
-			// 	apartmentDetails.append("<p>" + apartment.zip + "</p>");
-			// 	apartmentDetails.append("<p>" + apartment.lat + "</p>");
-			// 	apartmentDetails.append("<p>" + apartment.long + "</p>");
-			// 	// we will need to make sure we provide source for the image and insert an image
-			// 	// not the url. how dinamically to add source apartmentDetails.addAttr('src', appartment.image_url);
-			// 	apartmentDetails.append("<img class='aptImage' src=' " + apartment.image_url + " '>");
-
-
-			// 	// here we will need to access the DIV from the front and insert our apartmentDetails DIV
-
-
-		
-			// })
-			
-		})
-	};
-
-	//"#apartmentSearch", sendSearchInfo(finalQuery));
-	$( "#apartmentSearch" ).click(sendSearchInfo(finalQuery));
-
-	$("#city").click(function(event) {
-		event.preventDefault();
-		var city = $('#city').val().trim;
-
-		$.get("/api/:zip?", function(data) {
-			//alert(data);
-		})
-	})
+	// 	$.get("/api/:zip?", function(data) {
+	// 		//alert(data);
+	// 	})
+	// })
 
 
 });
+
+
+function getCity(locationData) {
+    var city;
+    for (var i = 0; i < locationData.address_components.length; i++) {
+        if (locationData.address_components[i].types.includes("locality")) {
+            city = locationData.address_components[i].long_name;
+            return city;
+        }
+    }
+    return city;
+}
+
+function getAddress(locationData){
+	var address;
+	var streetNumber;
+	var street; 
+
+	for (var i = 0; i < locationData.address_components.length; i++){
+		if (locationData.address_components[i].types.includes("street_number")){
+			streetNumber = locationData.address_components[i].long_name;
+		} else if (locationData.address_components[i].types.includes("route")){
+			street = locationData.address_components[i].long_name; 
+		}
+	}
+
+	address = streetNumber + " " + street;
+
+	return address 
+}
+
+function getPostal(locationData){
+	var postal;
+    for (var i = 0; i < locationData.address_components.length; i++) {
+        if (locationData.address_components[i].types.includes("postal_code")) {
+            postal = locationData.address_components[i].long_name;
+            return postal;
+        }
+    }
+    return postal;
+}

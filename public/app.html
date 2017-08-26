@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aptzilla</title>
+	<meta charset="UTF-8">
+	
+	<!-- Materialize CSS -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<!-- Materialize Override -->
+	<link href="assets/css/materialize-overrides.css" rel="stylesheet">
+
+	<!-- Filter Items CSS -->
+	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+	<!-- Misc CSS -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/header.css" rel="stylesheet">
+	<link href="css/banner.css" rel="stylesheet">
+	<link href="css/inputs.css" rel="stylesheet">
+	<link href="css/footer.css" rel="stylesheet">
+
+	
+
+
+</head>
+<body>
+
+<!-- Header Nav =============================================-->
+    <nav id="main-nav" class="transparent header row" role="navigation">
+        <div class="nav-wrapper">
+        <ul id="main-nav-body" class="left hide-on-med-and-down">
+				<!-- <li> <a href="#!" class="header-link login sign-in" id="signInWithGithub" title="Sign in with Github">
+                    Github Login 
+                    </a> </li> -->
+
+				<li> <a href="#saved-jobs-modal" class="header-link" id="displayJob" title="View Saved Jobs">
+                    Saved Properties 
+                    </a> </li>
+				</ul>
+        
+		<!-- Collapsed Nav (Mobile) -->
+			<ul id="nav-mobile" class="side-nav">
+				<li> <a class="close-btn" href="#!">Close Main Menu<i class="material-icons">close</i></a> </li>
+				<li> <a href="#!" class="header-link login sign-in btn" id="signInWithGithubSide" title="Sign in with Github">
+                    Github Login 
+                    </a> </li>
+				<li> <a href="#!" class="header-link login sign-out btn" id="signOutSide" title="Sign out">
+                    Sign Out 
+                    </a> </li>
+				<li> <a href="#saved-jobs-modal" class="header-link" id="displayJobs" title="View Saved Jobs">
+                    Saved Jobs 
+                    </a> </li>
+				<li> <a href="#resume-modal" class="header-link persistent" id="resumeGrader" title="Resume Grader">
+                    Resume Grader 
+                    </a> </li>
+				</ul>
+	        <a id="header-side-nav-link" href="#!" data-activates="nav-mobile" class="pin-target button-collapse"> <i class="main-nav-menu-icon material-icons">menu</i> </a>
+        </div>					
+    </nav>
+
+<!-- Banner =============================================-->
+
+	<div id="banner" class="landing valign-wrapper row">
+
+		<span id="banner-cover" class="ghost photo-tint"> </span>
+		<form class="col s12 xl8 offset-xl2">
+			<div class="row">
+					<div id="banner-logo-wrap">
+						<img id="banner-logo" class="logo logo-text feature-logo animated rubberBand" src="assets/images/logo.png" alt="aptzilla">
+						<span class="progress-bar feature-logo"> </span>
+						</div>
+				
+			</div>
+			<div class="row">
+				<!-- <div class="bar input-field input-text-wrap col s10 offset-s1 m6 offset-m1 l6 offset-l1 xl7"> -->
+				<div class="bar input-field input-text-wrap col s10 offset-s1 m8 offset-m2 l10 offset-l1 xl10 offset-xl1">
+					<i id="location-icon" class="material-icons bar tooltipped" data-position="right" data-delay="50" data-tooltip="Use Current Location">my_location</i>
+					<input id="apartment-search" placeholder="Location" type="text" class="bar validate">
+				</div>
+				<!-- <div class="bar input-field input-text-wrap col s10 offset-s1 m3 l3 xl4"> -->
+				<div class="bar input-field input-text-wrap col s10 offset-s1 m8 offset-m2 l4 offset-l1 xl4 offset-xl1">
+					
+					<input id="bedrooms" placeholder="Bedrooms" type="number" min="0" class="bar validate">
+				</div>
+				<!-- <div class="bar input-button input-field col s10 offset-s1 m1 l1 xl1"> -->
+				
+				<div class="bar input-field input-text-wrap col s5 offset-s1 m4 offset-m2 l3 " >
+					<input placeholder="Price Min" type="number" min="0" id="range-min" class="bar validate">
+				</div>
+				<div class="bar input-field input-text-wrap col s5 m4 l3">
+					<input placeholder="Price Max" type="number" min="0" id="range-max" class="bar validate">
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col s9 offset-s1 m8 offset-m2 l9 offset-l1">
+					<div id="range" style="margin-top: 30px"></div>
+				</div>
+
+				<div class="bar input-button input-field col s10 offset-s1 m8 offset-m2 l1 xl1">
+					<button id="submit" class="bar btn waves-effect waves-light" type="submit" name="action">
+						<i class="material-icons">search</i>
+					</button>
+				</div>
+			</div>
+			
+
+		</form>
+		<!-- Loading Icon -->
+		<!-- <div id="fox-trot-load" class="loading-wrap progress-wrap">
+			<div class="progress-target">
+				<img src="assets/icons/loadingicons/fox-trot-right@0.8.gif" alt="">
+			</div>
+		</div> -->
+
+		
+		
+	</div>
+<!-- Carousel ================================-->
+	
+<!-- 	<div class="col s12">
+
+			<div class="carousel center" data-indicators="true">
+			    <div class="carousel-fixed-item center">
+			      <a class="btn waves-effect white grey-text darken-text-2">Save Property</a>
+			    </div>
+
+			    <a class="carousel-item red white-text" href="#one!">
+			    	<img src="assets/images/apartment_7.png">
+			      <h2>First Panel</h2>
+			      <p class="white-text">This is your first panel</p>
+			    </a>
+			    <div class="carousel-item amber white-text" href="#two!">
+			      <h2>Second Panel</h2>
+			      <p class="white-text">This is your second panel</p>
+			    </div>
+			    <div class="carousel-item green white-text" href="#three!">
+			      <h2>Third Panel</h2>
+			      <p class="white-text">This is your third panel</p>
+			    </div>
+			    <div class="carousel-item blue white-text" href="#four!">
+			      <h2>Fourth Panel</h2>
+			      <p class="white-text">This is your fourth panel</p>
+			    </div>
+		 	</div>
+	 	</div> -->
+  <!-- <div class="carousel carousel-slider">
+  	<div class="carousel-fixed-item center">
+	      <a class="btn waves-effect white grey-text darken-text-2">Save Property</a>
+	   </div>
+    <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
+    <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
+    <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
+    <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
+    <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
+  </div> -->
+      
+	
+<!-- Page 1 =============================================-->
+	<div id="page1">
+	<!-- Feed Details =========================-->
+		<div id="feed-details" class="row">
+			<div class="col s12 m10 offset-m1 xl6 offset-xl3">
+				<p id="result-number" class="result-detail popout-comp-left">
+					<span id="result-count" class="target">0</span> results
+					(Showing results <span id="page-range" class="target">1 - 20</span>)
+					</p>
+			</div>
+		</div>
+	<!-- Feed =================================-->
+		<div id="feed-row" class="row">
+			<!-- Feed -->
+			<div class="col s12 m10 offset-m1 xl6 offset-xl3">
+				<ul id="feed" class="collapsible popout" data-collapsible="accordion">
+				</ul>
+			</div>
+		</div>
+		<!-- /row -->
+
+<!-- Footer ================================-->
+	<footer>
+		<div class="footer-container row">
+			<div id="ftr-main-wrap" class="footer-wrap ftr-section col s12">
+				<div class="row">
+					<div class="col s5 m5 offset-m1 l4 offset-l2">
+						<a id="logo-link" href="index.html" class="">
+							<img id="ftr-logo" class="headline" src="assets/images/logo.png" alt="Jobba">
+							</a>
+					</div>
+					<div class="col s7 m5 l4 ">
+						<a href="" class="sec-link">View on Github</a>
+						<!-- <a href="credits.html" class="sec-link">Credits</a> -->
+					</div>
+				</div>
+			</div>
+			<div id="ftr-caption-wrap" class="footer-wrap ftr-section col s10 offset-s1">
+				<p class="subheadline">© 2017 Copyright Bob Chethan Deen Ryan Tiff </p>
+			</div>
+		</div>
+	</footer>
+	
+
+	
+	<!-- Jquery   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.10.1/jquery.mark.es6.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/slider.js"></script>
+	<script>  
+		 $(document).ready(function(){
+	      $('.carousel').carousel();
+	    });
+
+		$('.carousel.carousel-slider').carousel({fullWidth: true});
+
+		
+
+        
+    
+
+	</script>
+
+</body>
+</html>
