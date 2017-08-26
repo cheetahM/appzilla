@@ -15,9 +15,10 @@ $(document).ready(function(){
 
 		// document.getElementByClassName("")
 		// save the character they typed into the character-search input
-		var location = $("#apartment-search").val().trim();
+		var zipcode = $("#apartment-search").val().trim();
 		var pricemin = $("#range-min").val().trim();
 		var pricemax = $("#range-max").val().trim();
+		var bedroom = $("#bedrooms").val().trim()
 		
 			// replace any spaces between that character with no space
 			// (effectively deleting the spaces). Make the string lowercase
@@ -26,29 +27,30 @@ $(document).ready(function(){
 			// run an AJAX GET-request for our servers api,
 			// including the user's character in the url
 
-			var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=AIzaSyBxgMHK10T-YS90r9OQhsSJm_aeEFAGcZ8",
-                "method": "GET"
-            };
+			// var settings = {
+   //              "async": true,
+   //              "crossDomain": true,
+   //              "url": "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=AIzaSyBxgMHK10T-YS90r9OQhsSJm_aeEFAGcZ8",
+   //              "method": "GET"
+   //          };
 
-			$.ajax(settings).done(function (response) {
-                var results = response.results[0];
-                city = getCity(results[0]);
-                address = getAddress(results[0])
-                latitude = response.results[0].geometry.location.lat;
-                longitude = response.results[0].geometry.location.lng;
-                zip = getPostal(results[0]);
+			// $.ajax(settings).done(function (response) {
+   //              var results = response.results[0];
+   //              city = getCity(results[0]);
+   //              address = getAddress(results[0])
+   //              latitude = response.results[0].geometry.location.lat;
+   //              longitude = response.results[0].geometry.location.lng;
+   //              // zip = getPostal(results[0]);
 
 			                
-			});
+			// });
 
 			// TODO: Find price interval instead of fixed price
 			
 
-			finalQuery = "/?address=" + address + "&price=" + JSON.stringify({"lt": pricemax, "gt":pricemin}) + "&bedroom=" + bedroom + "&city=" + city + "&state=" + state + "&zip=" + zip + "&lat=" + latitude + "&longitude=" + longitude + "&image_url=" + image_url;
+			// finalQuery = "/?address=" + address + "&price=" + JSON.stringify({"lt": pricemax, "gt":pricemin}) + "&bedroom=" + bedroom + "&city=" + city + "&state=" + state + "&zip=" + zip + "&lat=" + latitude + "&longitude=" + longitude + "&image_url=" + image_url;
 
+			finalQuery = "/?zip" + zipcode + "/?price=" + JSON.stringify({"lt": pricemax, "gt":pricemin}) + "&bedroom=" + bedroom
 			$.ajax(
 
 			{
@@ -57,7 +59,7 @@ $(document).ready(function(){
 			}
 			).done(function(data){
 
-				console.log("Now at the apartemtns.js we received this: " + JSON.stringify(receivedDataFromDatabase,null,'\t'));
+				console.log("Now at the apartemtns.js we received this: " + JSON.stringify(data,null,'\t'));
 
 				for (var i = 0; i<data.length; i++) {
 
@@ -78,16 +80,16 @@ $(document).ready(function(){
 						listingNumber.text(i);
 
 					var headerL = $('<div>');
-						headerL.addCLass('collapsible-header');
+						headerL.addClass('collapsible-header');
 
 					var bodyL = $('<div>');
 						bodyL.addClass('collapsible-body');
 
-					var headline = $('<h2>');
+					var headline = $('<h4>');
 						headline.addClass('headline');
 						headline.text(data[i].address);
 
-					var subheadline = $('<h3>');
+					var subheadline = $('<h5>');
 						subheadline.addClass('subheadline');
 
 					var subheadCity = $('<span>');
@@ -113,14 +115,14 @@ $(document).ready(function(){
 
 
 					var priceWrap = $('<p>');
-						companyWrap.addClass('meta-detail');
-						companyWrap.addClass('price');
-						companyWrap.text(data[i].price);
+						priceWrap.addClass('meta-detail');
+						priceWrap.addClass('price');
+						priceWrap.text("Price: " + data[i].price);
 
 					var bedroomWrap = $('<p>');
 						bedroomWrap.addClass('meta-detail');
 						bedroomWrap.addClass('bedroom');
-						bedroomWrap.text(location);
+						bedroomWrap.text("Bedrooms: " + data[i].bedroom);
 
 					var imageWrap = $('<img>');
 						imageWrap.addClass('meta-detail');
@@ -133,14 +135,14 @@ $(document).ready(function(){
 					bodyL.append(imageWrap);
 					
 					headerL.append(listingNumber);			
-					headerL.append(headlineL);			
-					headerL.append(subheadlineL);		
+					headerL.append(headline);			
+					headerL.append(subheadline);		
 						
 
-					property.append(headerEl);
-					property.append(bodyEl);
+					property.append(headerL);
+					property.append(bodyL);
 
-					$('#feed').append(listingEl);
+					$('#feed').append(property);
 
 				}
 
@@ -193,6 +195,8 @@ function getAddress(locationData){
 
 	return address 
 }
+
+
 
 function getPostal(locationData){
 	var postal;

@@ -198,7 +198,9 @@ a.alone {
 }
 /*------------------------------------------------------------*/
 
-
+.collapsible-body {
+	background-color: #fff;
+}
 .carousel-item{
 	width:400px !important;
 	}
