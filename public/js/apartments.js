@@ -52,7 +52,7 @@ $(document).ready(function(){
 
 			// finalQuery = "/?address=" + address + "&price=" + JSON.stringify({"lt": pricemax, "gt":pricemin}) + "&bedroom=" + bedroom + "&city=" + city + "&state=" + state + "&zip=" + zip + "&lat=" + latitude + "&longitude=" + longitude + "&image_url=" + image_url;
 
-			finalQuery =  "/?bedroom=" + bedroom
+			finalQuery = "/?zip=" + zipcode;
 			$.ajax(
 
 			{
