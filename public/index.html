@@ -1,286 +1,175 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<title>Aptzilla</title>
-
-	<!--Call to Bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-	<!--Call to style CSS-->
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<meta charset="UTF-8">
 	
-	<!--Call to jQuery-->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Materialize CSS -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<!-- Materialize Override -->
+	<link href="assets/css/materialize-overrides.css" rel="stylesheet">
 
-	<!--Call to Javascript-->
-	<script type="text/javascript"></script>
+	<!-- Filter Items CSS -->
+	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+	<!-- Misc CSS -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/header.css" rel="stylesheet">
+	<link href="css/banner.css" rel="stylesheet">
+	<link href="css/inputs.css" rel="stylesheet">
+	<link href="css/footer.css" rel="stylesheet">
+
+	
+
+
 </head>
-
-
 <body>
-<div class="container" id="headerDiv">
-	<!--Aptzilla Logo-->
-	<div class="row">
-		<a class="navbar-brand" href="#">
-			<img alt="Brand" src="http://via.placeholder.com/250x60">
-		</a>
-	</div>
 
-	<div class="row">
-		<br>
-		<br>
-		<center>
-			<h2>Find Your Perfect Apartment...Fast!</h2>
-		</center>
-		<a href="/add" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span>Add</a>
-	</div>
+<!-- Header Nav =============================================-->
+    <nav id="main-nav" class="transparent header row" role="navigation">
+        <div class="nav-wrapper">
+        <!-- <ul id="main-nav-body" class="left hide-on-med-and-down">
+				<li> <a href="#!" class="header-link login sign-in" id="signInWithGithub" title="Sign in with Github">
+                    Github Login 
+                    </a> </li>
 
-	<div class="row">
-		
-					<div class="col-lg-12">
-		
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title"><strong>Apartment Search</strong></h3>
-							</div>
-							<div class="panel-body">
-								<input type="text" id="apartment-search" class="form-control">
-								<br>
-								<div class="text-right">
-									<button type="submit" class="btn btn-primary btn-md" id="apt-search-btn"><span class="glyphicon glyphicon-search"></span> Search Your Feelings. You know it is true.</button>
-		
-								</div>
-							</div>
+				<li> <a href="#saved-jobs-modal" class="header-link" id="displayJob" title="View Saved Jobs">
+                    Saved Properties 
+                    </a> </li>
+				</ul> -->
+        
+		<!-- Collapsed Nav (Mobile) -->
+			<ul id="nav-mobile" class="side-nav">
+				<li> <a class="close-btn" href="#!">Close Main Menu<i class="material-icons">close</i></a> </li>
+				<li> <a href="#!" class="header-link login sign-in btn" id="signInWithGithubSide" title="Sign in with Github">
+                    Github Login 
+                    </a> </li>
+				<li> <a href="#!" class="header-link login sign-out btn" id="signOutSide" title="Sign out">
+                    Sign Out 
+                    </a> </li>
+				<li> <a href="#saved-jobs-modal" class="header-link" id="displayJobs" title="View Saved Jobs">
+                    Saved Jobs 
+                    </a> </li>
+				<li> <a href="#resume-modal" class="header-link persistent" id="resumeGrader" title="Resume Grader">
+                    Resume Grader 
+                    </a> </li>
+				</ul>
+	        <a id="header-side-nav-link" href="#!" data-activates="nav-mobile" class="pin-target button-collapse"> <i class="main-nav-menu-icon material-icons">menu</i> </a>
+        </div>					
+    </nav>
+
+<!-- Banner =============================================-->
+
+	<div id="banner" class="landing valign-wrapper row">
+
+		<span id="banner-cover" class="ghost photo-tint"> </span>
+		<form class="col s12 xl8 offset-xl2">
+			<div class="row">
+					<div id="banner-logo-wrap">
+						<img id="banner-logo" class="logo logo-text feature-logo animated rubberBand" src="assets/images/logo.png" alt="aptzilla">
+						<span class="progress-bar feature-logo"> </span>
 						</div>
+				
+			</div>
+			<div class="row">
+				<!-- <div class="bar input-field input-text-wrap col s10 offset-s1 m6 offset-m1 l6 offset-l1 xl7"> -->
+				<div class="bar input-field input-text-wrap col s10 offset-s1 m8 offset-m2 l10 offset-l1 xl10 offset-xl1">
+					<i id="location-icon" class="material-icons bar tooltipped" data-position="right" data-delay="50" data-tooltip="Use Current Location">my_location</i>
+					<input id="apartment-search" placeholder="Location" type="text" class="bar validate">
+				</div>
+				<!-- <div class="bar input-field input-text-wrap col s10 offset-s1 m3 l3 xl4"> -->
+				<div class="bar input-field input-text-wrap col s10 offset-s1 m8 offset-m2 l4 offset-l1 xl4 offset-xl1">
+					
+					<input id="bedrooms" placeholder="Bedrooms" type="number" min="0" class="bar validate">
+				</div>
+				<!-- <div class="bar input-button input-field col s10 offset-s1 m1 l1 xl1"> -->
+				
+				<div class="bar input-field input-text-wrap col s5 offset-s1 m4 offset-m2 l3 " >
+					<input placeholder="Price Min" type="number" min="0" id="range-min" class="bar validate">
+				</div>
+				<div class="bar input-field input-text-wrap col s5 m4 l3">
+					<input placeholder="Price Max" type="number" min="0" id="range-max" class="bar validate">
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col s9 offset-s1 m8 offset-m2 l9 offset-l1">
+					<div id="range" style="margin-top: 30px"></div>
+				</div>
+
+				<div class="bar input-button input-field col s10 offset-s1 m8 offset-m2 l1 xl1">
+					<button id="submit" class="bar btn waves-effect waves-light" type="submit" name="action">
+						<i class="material-icons">search</i>
+					</button>
+				</div>
+			</div>
+			
+
+		</form>
+		
+	</div>
+
+<!-- Page 1 =============================================-->
+	<div id="page1">
+	<!-- Feed Details =========================-->
+		<div id="feed-details" class="row">
+			<div class="col s12 m10 offset-m1 xl6 offset-xl3">
+				<p id="result-number" class="result-detail popout-comp-left">
+					<span id="result-count" class="target">0</span> results
+					(Showing results <span id="page-range" class="target">1 - 20</span>)
+					</p>
+			</div>
+		</div>
+	<!-- Feed =================================-->
+		<div id="feed-row" class="row">
+			<!-- Feed -->
+			<div class="col s12 m10 offset-m1 xl6 offset-xl3">
+				<ul id="feed" class="collapsible popout" data-collapsible="accordion">
+				</ul>
+			</div>
+		</div>
+		<!-- /row -->
+
+<!-- Footer ================================-->
+	<footer>
+		<div class="footer-container row">
+			<div id="ftr-main-wrap" class="footer-wrap ftr-section col s12">
+				<div class="row">
+					<div class="col s5 m5 offset-m1 l4 offset-l2">
+						<a id="logo-link" href="index.html" class="">
+							<img id="ftr-logo" class="headline" src="assets/images/logo.png" alt="Jobba">
+							</a>
+					</div>
+					<div class="col s7 m5 l4 ">
+						<a href="" class="sec-link">View on Github</a>
+						<!-- <a href="credits.html" class="sec-link">Credits</a> -->
 					</div>
 				</div>
+			</div>
+			<div id="ftr-caption-wrap" class="footer-wrap ftr-section col s10 offset-s1">
+				<p class="subheadline">© 2017 Copyright Bob Chethan Deen Ryan Tiff </p>
+			</div>
+		</div>
+	</footer>
 	
-	<!-- Search Query -->
-	<form role="search">
-		<div class="form-group row">
-			<div class="col-xs-1"></div>
 
-		    <div class="col-xs-2">
-		    	<input type="text" id="city" class="form-control city" placeholder="City">
-		  	</div>
+	
+	<!-- Jquery   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.10.1/jquery.mark.es6.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 
-		 <!--  	<div class="col-xs-2">
-		    	<input type="text" class="form-control" id="area" placeholder="Area">
-		  	</div> 
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/slider.js"></script>
+	<script src="js/apartments.js"></script>
 
-		  	<div class="col-xs-2">
-		    	<input type="text" class="form-control bedroom" placeholder="Bedroom">
-		  	</div>
-
-		  	<div class="col-xs-2">
-		    	<input type="text" class="form-control price" placeholder="Price Range">
-		  	</div> -->
-
-			<div class="col-xs-3">
-		    	<button type="submit" id="apartmentSearch" class="btn btn-primary btn-md">Submit</button>
-		  	</div> 
-		</div>
-
-		<div class="form-group row">
-			<div class="col-xs-3">
-				<label class="form-check-label">Building Type
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Apartment
-						</label>
-					</div>
-
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							House
-						</label>
-					</div>
-
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Luxury Condo
-						</label>
-					</div>
-				</label>	
-			</div>
-
-			<div class="col-xs-3">
-				<label class="form-check-label">Laundry
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							In unit
-						</label>
-					</div>
-
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							In building
-						</label>
-					</div>
-
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							None
-						</label>
-					</div>
-				</label>
-			</div>
-
-			<div class="col-xs-3">
-				<label class="form-check-label">Amenities
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Pool
-						</label>
-					</div>
-
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Hot Tub
-						</label>
-					</div>
-
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Gym
-						</label>
-					</div>
-				</label>
-			</div>
-
-
-			<div class="col-xs-3">
-				<label class="form-check-label">Other
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Pets
-						</label>
-					</div>
-
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Parking
-						</label>
-					</div>
-
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Safe Area
-						</label>
-					</div>
-				
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Furnished
-						</label>
-					</div>
-
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Close to Caltrain
-						</label>
-					</div>
-				</label>
-			</div>
-		</div>
-	</form>  
-</div>
-
-<!--Team Member Section-->
-<section class="container" id="team">
-    <div class="row">
-    	<div class="col-lg-12 text-center">
-    		<h2 class="section-heading">Our Amazing Team</h2>
-    		<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-    	</div>
-    </div>
-
-    <div class="row">
-    	<div class="col-sm-4">
-    		<div class="team-member">
-    			<center>
-        			<img class="img-circle" src="http://via.placeholder.com/300x300" alt="" style="width:200px;height:200px;">
-					<h4>Member Name</h4>
-					<p class="text-muted">Member Description</p>
-					<p class="text-muted">Why I Like Aptzilla</p>
-         		</center>
-        	</div>
-      	</div>
-      	
-      	<div class="col-sm-4">
-    		<div class="team-member">
-    			<center>
-        			<img class="img-circle" src="http://via.placeholder.com/300x300" alt="" style="width:200px;height:200px;">
-					<h4>Member Name</h4>
-					<p class="text-muted">Member Description</p>
-					<p class="text-muted">Why I Like Aptzilla</p>
-         		</center>
-        	</div>
-      	</div>
-
-      	<div class="col-sm-4">
-    		<div class="team-member">
-    			<center>
-        			<img class="img-circle" src="http://via.placeholder.com/300x300" alt="" style="width:200px;height:200px;">
-					<h4>Member Name</h4>
-					<p class="text-muted">Member Description</p>
-					<p class="text-muted">Why I Like Aptzilla</p>
-         		</center>
-        	</div>
-      	</div>
-    </div>
-
-    <div class="row">
-		<div class="col-sm-2"></div>
-		<div class="col-sm-3">
-    		<div class="team-member">
-    			<center>
-        			<img class="img-circle" src="http://via.placeholder.com/300x300" alt="" style="width:200px;height:200px;">
-					<h4>Member Name</h4>
-					<p class="text-muted">Member Description</p>
-					<p class="text-muted">Why I Like Aptzilla</p>
-         		</center>
-        	</div>
-      	</div>
-
-		<div class="col-sm-2"></div>
-      	<div class="col-sm-3">
-    		<div class="team-member">
-    			<center>
-        			<img class="img-circle" src="http://via.placeholder.com/300x300" alt="" style="width:200px;height:200px;">
-					<h4>Member Name</h4>
-					<p class="text-muted">Member Description</p>
-					<p class="text-muted">Why I Like Aptzilla</p>
-         		</center>
-        	</div>
-      	</div>
-      	<div class="col-sm-2"></div>
-    </div>
-
-    </div>
-
-    <div class="row text-center">
-    	<p class="large text-muted">More Description text</p>
-    </div>
-</section>
-
-<script src="js/apartments.js" type="text/javascript"></script>
 
 </body>
 </html>
